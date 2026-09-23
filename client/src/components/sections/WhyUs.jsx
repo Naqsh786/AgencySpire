@@ -103,7 +103,7 @@ const WhyUs = () => {
       {/* ============ SCENE 02: SNAKE GAME ============ */}
       <section
         ref={s2Ref}
-        className="why-us-scene why-us-scene-02 relative z-10 flex items-center justify-center overflow-hidden py-16 md:py-24"
+        className="why-us-scene why-us-scene-02 relative z-10 flex flex-col items-center justify-center overflow-hidden py-12 sm:py-16 md:py-24"
       >
         {/* Grid background */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -117,7 +117,12 @@ const WhyUs = () => {
           </svg>
         </div>
 
-        <div className="relative z-10">
+        {/* Mobile title */}
+        <h2 className="relative z-10 mb-6 sm:mb-8 text-center text-2xl sm:text-3xl md:text-4xl font-display font-bold tracking-tight text-white sm:hidden">
+          Take a <span className="italic font-light text-brand-accent">break.</span>
+        </h2>
+
+        <div className="relative z-10 w-full max-w-md sm:max-w-lg">
           <SnakeGame />
         </div>
       </section>

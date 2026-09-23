@@ -270,9 +270,9 @@ const SnakeGame = () => {
   const showOverlay = !isPlaying;
 
   return (
-    <div className="flex flex-col items-center gap-3 select-none" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+    <div className="flex flex-col items-center gap-3 sm:gap-4 select-none" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       {/* HUD */}
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-3 sm:gap-5">
         <div className="text-center">
           <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/30">Score</div>
           <div className="font-display text-2xl font-bold tabular-nums text-white">{score}</div>
@@ -304,11 +304,13 @@ const SnakeGame = () => {
 
       {/* Grid */}
       <div
-        className="relative overflow-hidden rounded-2xl border-2 border-brand-accent/20 bg-[#08070c] cursor-pointer"
+        className="relative overflow-hidden rounded-2xl border-2 border-brand-accent/20 bg-[#08070c] cursor-pointer touch-none"
         style={{
           width: gw + 8,
           height: gw + 8,
           boxShadow: '0 0 50px rgba(216,180,226,0.1), inset 0 0 30px rgba(0,0,0,0.5)',
+          maxWidth: 'calc(100vw - 32px)',
+          maxHeight: 'calc(100vw - 32px)',
         }}
         onClick={onBoardClick}
       >
@@ -479,43 +481,47 @@ const SnakeGame = () => {
         )}
       </div>
 
-      {/* D-pad â€” always visible for easy control */}
-      <div className="flex flex-col items-center gap-1">
+      {/* D-pad — always visible for easy control */}
+      <div className="flex flex-col items-center gap-1.5 sm:gap-1">
         <button
           onClick={() => handleDirection(DIR_UP)}
           type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/50 transition-all duration-200 hover:border-brand-accent/50 hover:bg-brand-accent/15 hover:text-brand-accent active:border-brand-accent/70 active:bg-brand-accent/25 active:text-brand-accent active:scale-95"
+          className="flex h-14 w-14 sm:h-11 sm:w-11 items-center justify-center rounded-2xl sm:rounded-xl border border-white/10 bg-white/[0.04] text-white/50 transition-all duration-200 hover:border-brand-accent/50 hover:bg-brand-accent/15 hover:text-brand-accent active:border-brand-accent/70 active:bg-brand-accent/25 active:text-brand-accent active:scale-95 text-xl"
           aria-label="Move up"
         >▲</button>
-        <div className="flex gap-1">
+        <div className="flex gap-1.5 sm:gap-1">
           <button
             onClick={() => handleDirection(DIR_LEFT)}
             type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/50 transition-all duration-200 hover:border-brand-accent/50 hover:bg-brand-accent/15 hover:text-brand-accent active:border-brand-accent/70 active:bg-brand-accent/25 active:text-brand-accent active:scale-95"
+            className="flex h-14 w-14 sm:h-11 sm:w-11 items-center justify-center rounded-2xl sm:rounded-xl border border-white/10 bg-white/[0.04] text-white/50 transition-all duration-200 hover:border-brand-accent/50 hover:bg-brand-accent/15 hover:text-brand-accent active:border-brand-accent/70 active:bg-brand-accent/25 active:text-brand-accent active:scale-95 text-xl"
             aria-label="Move left"
           >◀</button>
           <button
             onClick={() => handleDirection(DIR_DOWN)}
             type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/50 transition-all duration-200 hover:border-brand-accent/50 hover:bg-brand-accent/15 hover:text-brand-accent active:border-brand-accent/70 active:bg-brand-accent/25 active:text-brand-accent active:scale-95"
+            className="flex h-14 w-14 sm:h-11 sm:w-11 items-center justify-center rounded-2xl sm:rounded-xl border border-white/10 bg-white/[0.04] text-white/50 transition-all duration-200 hover:border-brand-accent/50 hover:bg-brand-accent/15 hover:text-brand-accent active:border-brand-accent/70 active:bg-brand-accent/25 active:text-brand-accent active:scale-95 text-xl"
             aria-label="Move down"
           >▼</button>
           <button
             onClick={() => handleDirection(DIR_RIGHT)}
             type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/50 transition-all duration-200 hover:border-brand-accent/50 hover:bg-brand-accent/15 hover:text-brand-accent active:border-brand-accent/70 active:bg-brand-accent/25 active:text-brand-accent active:scale-95"
+            className="flex h-14 w-14 sm:h-11 sm:w-11 items-center justify-center rounded-2xl sm:rounded-xl border border-white/10 bg-white/[0.04] text-white/50 transition-all duration-200 hover:border-brand-accent/50 hover:bg-brand-accent/15 hover:text-brand-accent active:border-brand-accent/70 active:bg-brand-accent/25 active:text-brand-accent active:scale-95 text-xl"
             aria-label="Move right"
           >▶</button>
         </div>
       </div>
 
       {/* Desktop hints */}
-      <div className="flex items-center gap-3">
+      <div className="hidden sm:flex items-center gap-3">
         <span className="font-mono text-[8px] text-white/15">WASD / Arrows to move</span>
         <span className="w-1 h-1 rounded-full bg-white/20" />
         <span className="font-mono text-[8px] text-white/15">SPACE to pause</span>
         <span className="w-1 h-1 rounded-full bg-white/20" />
         <span className="font-mono text-[8px] text-white/15">Click board to start</span>
+      </div>
+      {/* Mobile hint */}
+      <div className="sm:hidden font-mono text-[9px] text-white/20 tracking-wider">
+        Swipe to move · Tap to pause
       </div>
     </div>
   );

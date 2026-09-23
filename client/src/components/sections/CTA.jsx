@@ -80,6 +80,9 @@ const CTA = () => {
     const section = sectionRef.current;
     if (!section || reduced) return undefined;
 
+    // Reduce effects on mobile for performance
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
     let raf = null;
     const onMove = (e) => {
       if (raf) return;
@@ -102,10 +105,27 @@ const CTA = () => {
           const angle = Math.atan2(e.clientY - cy, e.clientX - cx) * (180 / Math.PI);
           beam.style.setProperty('--beam-angle', `${angle + 90}deg`);
         }
+
+        // On mobile, simplify aurora orb positions for performance
+        if (isMobile) {
+          const orbs = section.querySelectorAll('.cta-bg-orb');
+          orbs.forEach((orb, i) => {
+            const speed = (i + 1) * 0.3;
+            orb.style.transform = `translate(${(x - rect.width/2) * 0.02}px, ${(y - rect.height/2) * 0.02 * speed}px)`;
+          });
+        }
       });
     };
 
-    const onLeave = () => section.style.setProperty('--cta-glow-opacity', '0');
+    const onLeave = () => {
+      section.style.setProperty('--cta-glow-opacity', '0');
+      if (isMobile) {
+        const orbs = section.querySelectorAll('.cta-bg-orb');
+        orbs.forEach((orb) => {
+          orb.style.transform = '';
+        });
+      }
+    };
 
     section.addEventListener('mousemove', onMove);
     section.addEventListener('mouseleave', onLeave);
@@ -222,11 +242,11 @@ const CTA = () => {
       </div>
 
       {/* ===== CONTENT ===== */}
-      <div className="relative z-10 mx-auto flex min-h-[720px] max-w-5xl flex-col items-center justify-center px-6 py-32 text-center md:min-h-[820px] md:px-12">
+      <div className="relative z-10 mx-auto flex min-h-[720px] max-w-5xl flex-col items-center justify-center px-4 sm:px-6 py-24 sm:py-28 md:py-32 text-center md:min-h-[820px] md:px-12">
         {/* Glass card with animated border beam */}
         <div
           ref={cardRef}
-          className="cta-glass-card cta-glass-card-light relative rounded-[2.25rem] px-8 py-14 md:rounded-[2.75rem] md:px-16 md:py-20"
+          className="cta-glass-card cta-glass-card-light relative rounded-[2rem] px-6 py-12 sm:rounded-[2.25rem] sm:px-8 sm:py-14 md:rounded-[2.75rem] md:px-16 md:py-20"
         >
           {/* Conic border beam layer */}
           <div ref={beamRef} className="cta-beam cta-beam-light" aria-hidden="true" />
@@ -257,7 +277,7 @@ const CTA = () => {
           {/* Headline — word-by-word masked reveal */}
           <h2
             ref={headlineRef}
-            className="max-w-4xl text-5xl font-display font-bold leading-[0.95] tracking-[-0.04em] text-[#25152d] md:text-7xl lg:text-[6.5rem]"
+            className="max-w-4xl text-[2.5rem] sm:text-4xl md:text-5xl lg:text-7xl xl:text-[6.5rem] font-display font-bold leading-[0.95] tracking-[-0.04em] text-[#25152d]"
           >
             <span className="inline-block overflow-hidden pb-3 align-bottom">
               <span className="cta-word inline-block">Have</span>
@@ -286,13 +306,13 @@ const CTA = () => {
           </p>
 
           {/* CTA buttons */}
-          <div data-cta-reveal className="mt-14 flex w-full flex-col items-center justify-center gap-6 sm:w-auto sm:flex-row">
+          <div data-cta-reveal className="mt-12 sm:mt-14 flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row sm:gap-6">
             {/* Primary — magnetic purple gradient button */}
             <div className="relative inline-flex" data-magnetic-wrap>
               <a
                 href="mailto:hello@aetheriatech.com"
                 ref={magneticRef}
-                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-10 py-5 font-display text-sm font-bold uppercase tracking-[0.15em] text-white transition-shadow duration-500 will-change-transform"
+                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-8 py-4 sm:px-10 sm:py-5 font-display text-sm font-bold uppercase tracking-[0.15em] text-white transition-shadow duration-500 will-change-transform min-h-[52px] sm:min-h-0"
                 style={{
                   background: 'linear-gradient(135deg, #a06cd5 0%, #7a4fa0 55%, #5b346d 100%)',
                   boxShadow: '0 12px 40px rgba(160,108,213,0.45), inset 0 1px 1px rgba(255,255,255,0.35)',
@@ -317,7 +337,7 @@ const CTA = () => {
             <button
               type="button"
               onClick={handleCopyEmail}
-              className="inline-flex items-center gap-3 rounded-full border border-[#a06cd5]/25 bg-white/70 px-8 py-5 font-mono text-sm tracking-[0.1em] text-[#674a70] backdrop-blur-md transition-all duration-300 hover:border-[#a06cd5]/50 hover:bg-white hover:text-[#25152d]"
+              className="inline-flex items-center justify-center gap-3 rounded-full border border-[#a06cd5]/25 bg-white/70 px-6 py-4 sm:px-8 sm:py-5 font-mono text-sm tracking-[0.1em] text-[#674a70] backdrop-blur-md transition-all duration-300 hover:border-[#a06cd5]/50 hover:bg-white hover:text-[#25152d] min-h-[52px] sm:min-h-0"
             >
               {copied ? (
                 <>

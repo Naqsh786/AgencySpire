@@ -169,7 +169,7 @@ const LiquidGlassNavbar = () => {
               </span>
             </Link>
 
-            <div className="relative z-10 flex flex-1 items-center justify-center gap-1">
+            <div className="relative z-10 flex flex-1 items-center justify-center gap-1 sm:gap-2">
               {NAV_LINKS.map((link) =>
                 link.dropdown ? (
                   /* ── Services Dropdown ── */
@@ -183,7 +183,7 @@ const LiquidGlassNavbar = () => {
                     <button
                       onClick={() => setDropdownOpen(!dropdownOpen)}
                       className={cn(
-                        'flex items-center gap-1 rounded-full px-5 py-3 font-display text-sm font-medium transition-all',
+                        'flex items-center gap-1 rounded-full px-4 sm:px-5 py-2.5 sm:py-3 font-display text-sm font-medium transition-all min-w-[44px]',
                         onLight
                           ? 'text-[#674a70] hover:text-[#25152d] hover:bg-[#5b346d]/8'
                           : 'text-white/50 hover:text-white hover:bg-white/[0.06]'
@@ -265,7 +265,7 @@ const LiquidGlassNavbar = () => {
                     key={link.label}
                     to={link.href}
                     className={cn(
-                      'rounded-full px-5 py-3 font-display text-sm font-medium transition-all',
+                      'rounded-full px-4 sm:px-5 py-2.5 sm:py-3 font-display text-sm font-medium transition-all min-w-[44px] text-center',
                       onLight
                         ? 'text-[#674a70] hover:text-[#25152d] hover:bg-[#5b346d]/8'
                         : 'text-white/50 hover:text-white hover:bg-white/[0.06]'
@@ -432,7 +432,7 @@ const LiquidGlassNavbar = () => {
                     >
                       <button
                         onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                        className="flex items-center justify-between w-full rounded-2xl px-5 py-4 font-display text-base font-medium text-white/60 transition-all hover:bg-white/[0.06] hover:text-white"
+                        className="flex items-center justify-between w-full rounded-2xl px-5 py-4 font-display text-base font-medium text-white/60 transition-all hover:bg-white/[0.06] hover:text-white min-h-[52px]"
                       >
                         <div className="flex items-center">
                           <span className="mr-3 font-mono text-[10px] text-brand-accent/50">0{i + 1}</span>
@@ -463,7 +463,7 @@ const LiquidGlassNavbar = () => {
                                     key={cat.label}
                                     to={cat.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all hover:bg-white/[0.06]"
+                                    className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all hover:bg-white/[0.06] min-h-[48px]"
                                   >
                                     <div
                                       className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
@@ -490,7 +490,7 @@ const LiquidGlassNavbar = () => {
                       <Link
                         to={link.href}
                         onClick={() => setIsOpen(false)}
-                        className="flex items-center rounded-2xl px-5 py-4 font-display text-base font-medium text-white/60 transition-all hover:bg-white/[0.06] hover:text-white"
+                        className="flex items-center rounded-2xl px-5 py-4 font-display text-base font-medium text-white/60 transition-all hover:bg-white/[0.06] hover:text-white min-h-[52px]"
                       >
                         <span className="mr-3 font-mono text-[10px] text-brand-accent/50">0{i + 1}</span>
                         {link.label}
@@ -505,7 +505,7 @@ const LiquidGlassNavbar = () => {
                   <Link
                     to="/contact"
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center rounded-2xl px-5 py-4 font-display text-sm font-semibold text-brand-bg transition-all block"
+                    className="flex items-center justify-center rounded-2xl px-5 py-4 font-display text-sm font-semibold text-brand-bg transition-all block min-h-[52px]"
                     style={{
                       background: 'linear-gradient(135deg, #D8B4E2, #a06cd5)',
                       boxShadow: '0 4px 20px rgba(216,180,226,0.25)',

@@ -95,74 +95,74 @@ function useIsMobile() {
 /* ===== Step image compositions ===== */
 
 function renderStepImages(step) {
-  switch (step) {
-    case 0:
-      return (
-        <div className="relative h-full w-full">
+    switch (step) {
+      case 0:
+        return (
+          <div className="relative h-full w-full">
+            <AnimatedStepImage
+              alt="Discovery workshop"
+              className={cn(defaultImg, 'left-0 top-[12%] w-[48%] sm:left-0 sm:top-[10%] sm:w-[52%] md:left-0 md:top-[10%] md:w-[52%]')}
+              src={processImages.step1img1}
+              preset="slideInLeft"
+            />
+            <AnimatedStepImage
+              alt="Team collaboration"
+              className={cn(defaultImg, 'right-0 top-[38%] w-[48%] sm:right-0 sm:top-[38%] sm:w-[58%] md:right-0 md:top-[44%] md:w-[44%]')}
+              src={processImages.step1img2}
+              preset="slideInRight"
+              delay={0.1}
+            />
+          </div>
+        );
+      case 1:
+        return (
+          <div className="relative h-full w-full">
+            <AnimatedStepImage
+              alt="Strategy session"
+              className={cn(defaultImg, 'left-0 top-[16%] w-[48%] sm:left-0 sm:top-[14%] sm:w-[52%] md:left-0 md:top-[14%] md:w-[52%]')}
+              src={processImages.step2img1}
+              preset="fadeInScale"
+            />
+            <AnimatedStepImage
+              alt="Roadmap planning"
+              className={cn(defaultImg, 'right-0 top-[46%] w-[48%] sm:right-0 sm:top-[44%] sm:w-[44%] md:right-0 md:top-[44%] md:w-[44%]')}
+              src={processImages.step2img2}
+              preset="fadeInScale"
+              delay={0.1}
+            />
+          </div>
+        );
+      case 2:
+        return (
           <AnimatedStepImage
-            alt="Discovery workshop"
-            className={cn(defaultImg, 'left-0 top-[10%] w-[52%]')}
-            src={processImages.step1img1}
-            preset="slideInLeft"
-          />
-          <AnimatedStepImage
-            alt="Team collaboration"
-            className={cn(defaultImg, 'left-[42%] top-[38%] w-[58%]')}
-            src={processImages.step1img2}
-            preset="slideInRight"
-            delay={0.1}
-          />
-        </div>
-      );
-    case 1:
-      return (
-        <div className="relative h-full w-full">
-          <AnimatedStepImage
-            alt="Strategy session"
-            className={cn(defaultImg, 'left-[4%] top-[14%] w-[52%]')}
-            src={processImages.step2img1}
+            alt="Interface design"
+            className={cn(defaultImg, 'left-0 top-[20%] w-[84%] sm:left-0 sm:top-[18%] sm:w-[90%] md:left-0 md:top-[18%] md:w-[90%]')}
+            src={processImages.step3img}
             preset="fadeInScale"
           />
+        );
+      case 3:
+        return (
           <AnimatedStepImage
-            alt="Roadmap planning"
-            className={cn(defaultImg, 'left-[52%] top-[44%] w-[44%]')}
-            src={processImages.step2img2}
+            alt="Engineering build"
+            className={cn(defaultImg, 'left-0 top-[20%] w-[84%] sm:left-0 sm:top-[18%] sm:w-[90%] md:left-0 md:top-[18%] md:w-[90%]')}
+            src={processImages.step4img}
             preset="fadeInScale"
-            delay={0.1}
           />
-        </div>
-      );
-    case 2:
-      return (
-        <AnimatedStepImage
-          alt="Interface design"
-          className={cn(defaultImg, 'left-[5%] top-[18%] w-[90%]')}
-          src={processImages.step3img}
-          preset="fadeInScale"
-        />
-      );
-    case 3:
-      return (
-        <AnimatedStepImage
-          alt="Engineering build"
-          className={cn(defaultImg, 'left-[5%] top-[18%] w-[90%]')}
-          src={processImages.step4img}
-          preset="fadeInScale"
-        />
-      );
-    case 4:
-      return (
-        <AnimatedStepImage
-          alt="Launch analytics"
-          className={cn(defaultImg, 'left-[5%] top-[18%] w-[90%]')}
-          src={processImages.step5img}
-          preset="fadeInScale"
-        />
-      );
-    default:
-      return null;
+        );
+      case 4:
+        return (
+          <AnimatedStepImage
+            alt="Launch analytics"
+            className={cn(defaultImg, 'left-0 top-[20%] w-[84%] sm:left-0 sm:top-[18%] sm:w-[90%] md:left-0 md:top-[18%] md:w-[90%]')}
+            src={processImages.step5img}
+            preset="fadeInScale"
+          />
+        );
+      default:
+        return null;
+    }
   }
-}
 
 /* ===== Main carousel card ===== */
 
@@ -203,30 +203,30 @@ export function ProcessCarousel({ step: controlledStep, className }) {
         '--y': useMotionTemplate`${mouseY}px`,
       }}
     >
-      <div className="process-beam relative w-full overflow-hidden rounded-3xl border border-brand-accent/20 bg-[#0b0910]/90 shadow-[0_30px_80px_rgba(0,0,0,0.5)] backdrop-blur-md">
-        <div className="m-6 flex min-h-[420px] flex-col gap-8 md:m-9 md:min-h-[440px] lg:min-h-[460px] lg:flex-row lg:gap-6">
+      <div className="process-beam relative w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-brand-accent/20 bg-[#0b0910]/90 shadow-[0_30px_80px_rgba(0,0,0,0.5)] backdrop-blur-md">
+        <div className="m-4 sm:m-6 md:m-9 flex min-h-[360px] sm:min-h-[420px] flex-col gap-6 sm:gap-8 md:min-h-[440px] lg:min-h-[460px] lg:flex-row lg:gap-6">
           {/* Step text */}
           <div className="relative z-10 flex w-full flex-col justify-center lg:w-2/5">
             <AnimatePresence mode="wait">
               <motion.div
                 key={step}
-                className="flex w-full flex-col gap-4"
+                className="flex w-full flex-col gap-3 sm:gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               >
                 <motion.div
-                  className="flex items-center gap-3 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-brand-accent"
+                  className="flex items-center gap-2 sm:gap-3 font-mono text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-brand-accent"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <span className="h-px w-6 bg-brand-accent/50" />
+                  <span className="h-px w-5 sm:w-6 bg-brand-accent/50" />
                   Chapter 0{step + 1} — {active.name}
                 </motion.div>
                 <motion.h3
-                  className="font-display text-2xl font-bold tracking-tight text-white md:text-3xl"
+                  className="font-display text-xl sm:text-2xl font-bold tracking-tight text-white md:text-3xl"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -234,7 +234,7 @@ export function ProcessCarousel({ step: controlledStep, className }) {
                   {active.title}
                 </motion.h3>
                 <motion.p
-                  className="text-sm leading-relaxed text-brand-text-muted md:text-base"
+                  className="text-xs sm:text-sm leading-relaxed text-brand-text-muted md:text-base"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.15, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}

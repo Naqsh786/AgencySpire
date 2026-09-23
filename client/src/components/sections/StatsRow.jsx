@@ -76,30 +76,30 @@ const StatsRow = () => {
         </svg>
       </div>
 
-      <div className="stats-content container mx-auto px-6 md:px-12 relative z-10 py-24 md:py-32">
-        <div className="why-choose-intro mx-auto mb-16 max-w-5xl text-center">
+      <div className="stats-content container mx-auto px-4 sm:px-6 md:px-12 relative z-10 py-20 sm:py-24 md:py-32">
+        <div className="why-choose-intro mx-auto mb-12 sm:mb-16 max-w-5xl text-center">
           <div className="section-title-kdm mb-8 justify-center">
-            <h2 className="text-[2.6rem] font-display font-bold leading-[0.98] tracking-[-0.04em] text-[#25152d] md:text-[3.6rem] lg:text-[4.6rem]">Why Choose Us</h2>
+            <h2 className="text-[2.2rem] sm:text-[2.6rem] font-display font-bold leading-[0.98] tracking-[-0.04em] text-[#25152d] md:text-[3.6rem] lg:text-[4.6rem]">Why Choose Us</h2>
           </div>
-          <h3 className="mx-auto max-w-5xl text-[2.8rem] font-display font-bold leading-[0.94] tracking-[-0.045em] text-[#25152d] sm:text-5xl md:text-7xl lg:text-[6.4rem]">Built Around <span className="font-light italic text-[#674a70]">Your Ambition.</span></h3>
-          <p className="mx-auto mt-8 max-w-3xl text-lg font-body leading-relaxed text-[#674a70] md:text-xl lg:text-2xl">Four reasons why leading brands choose us to design, build and grow their next generation of digital products.</p>
+          <h3 className="mx-auto max-w-5xl text-[2.2rem] sm:text-[2.8rem] font-display font-bold leading-[0.94] tracking-[-0.045em] text-[#25152d] sm:text-5xl md:text-7xl lg:text-[6.4rem]">Built Around <span className="font-light italic text-[#674a70]">Your Ambition.</span></h3>
+          <p className="mx-auto mt-6 sm:mt-8 max-w-3xl text-base sm:text-lg font-body leading-relaxed text-[#674a70] md:text-xl lg:text-2xl">Four reasons why leading brands choose us to design, build and grow their next generation of digital products.</p>
         </div>
         {/* Unique decorative elements */}
-        <RibbonDecorations orbs twinkles laserLine />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+<RibbonDecorations orbs twinkles laserLine />
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 text-center">
           
           {stats.map((stat, i) => (
             <div key={i} className="stat-item">
-              {/* KDM-style gradient border card */}
-              <div className="gradient-border-card p-10 flex flex-col items-center justify-center min-h-[220px] hover:scale-105 transition-transform duration-500">
+              {/* Enhanced KDM-style gradient border card with subtle glow */}
+              <div className="gradient-border-card p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center min-h-[200px] sm:min-h-[240px] hover:scale-110 transition-all duration-500 hover:shadow-[0_0_30px_rgba(216,180,226,0.3)]">
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
-                <div className="stats-label text-brand-text-muted font-mono tracking-widest uppercase text-xs md:text-sm mt-4">
+                <div className="stats-label text-brand-text-muted font-mono tracking-widest uppercase text-xs sm:text-sm md:text-sm mt-3 sm:mt-4 font-semibold">
                   {stat.label}
                 </div>
               </div>
             </div>
           ))}
-
+          
         </div>
       </div>
 

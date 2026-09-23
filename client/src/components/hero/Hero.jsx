@@ -86,7 +86,7 @@ const Hero = () => {
               </div>
             </div>
             
-            <h1 ref={headlineRef} className="text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] font-display font-bold leading-[0.9] tracking-tight mb-8">
+            <h1 ref={headlineRef} className="text-[2.75rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] font-display font-bold leading-[0.9] tracking-tight mb-6 sm:mb-8">
               <div className="overflow-hidden pb-3">
                 <div className="hero-line-inner">WE BUILD</div>
               </div>
@@ -101,7 +101,7 @@ const Hero = () => {
               </div>
             </h1>
             
-            <p ref={textRef} className="text-xl md:text-2xl text-brand-text-muted max-w-xl mb-12 font-body font-normal leading-relaxed text-balance">
+            <p ref={textRef} className="text-base sm:text-xl md:text-2xl text-brand-text-muted max-w-xl mb-8 sm:mb-12 font-body font-normal leading-relaxed text-balance">
               Brands, digital experiences, technology and growth — built under one roof.
             </p>
             
@@ -120,13 +120,14 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: KDM-style 3D tilt decorative image */}
-          <div className="hidden lg:flex justify-center items-center hero-tilt pointer-events-auto">
+          {/* Right: 3D tilt image (desktop) / static card (mobile) */}
+          <div className="flex justify-center items-center hero-tilt pointer-events-auto">
+            {/* Desktop 3D tilt */}
             <div 
               ref={imageRef}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="hero-tilt-img relative w-[400px] h-[400px] transition-transform duration-300 ease-out cursor-pointer"
+              className="hero-tilt-img hidden lg:block relative w-[400px] h-[400px] transition-transform duration-300 ease-out cursor-pointer"
               style={{ transformStyle: 'preserve-3d' }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/20 to-brand-accent/5 rounded-[3rem] rotate-12 border border-brand-accent/15 overflow-hidden">
@@ -146,8 +147,21 @@ const Hero = () => {
                 />
               </div>
               <div className="absolute inset-8 bg-gradient-to-br from-brand-accent/10 to-transparent rounded-[2rem] rotate-3 pointer-events-none" />
-              {/* Glow effect on hover */}
               <div className="absolute inset-0 rounded-[3rem] opacity-0 hover:opacity-100 transition-opacity duration-500 shadow-[0_0_60px_rgba(216,180,226,0.3)]" />
+            </div>
+            {/* Mobile static card */}
+            <div className="lg:hidden relative w-[280px] sm:w-[340px] aspect-square rounded-[2rem] border border-brand-accent/15 overflow-hidden shadow-[0_0_40px_rgba(216,180,226,0.15)]">
+              <img
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=70"
+                alt="Aetheria Tech workspace"
+                className="h-full w-full object-cover opacity-50"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/30 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="ribbon-tag mb-3">Creative Technology</div>
+                <p className="text-sm text-brand-text-muted">Design, build, automate & grow — under one roof.</p>
+              </div>
             </div>
           </div>
 

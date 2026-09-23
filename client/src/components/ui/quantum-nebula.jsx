@@ -47,7 +47,9 @@ const config = {
 // bloom pass doesn't render a 4K framebuffer on retina screens.
 const isCoarse = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
 const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const PARTICLE_COUNT = prefersReducedMotion ? 0 : (isCoarse ? Math.round(config.particles.count * 0.18) : config.particles.count);
+const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024; // lg breakpoint
+const baseCount = prefersReducedMotion ? 0 : (isDesktop ? config.particles.count : 12500);
+const PARTICLE_COUNT = isCoarse ? Math.round(baseCount * 0.18) : baseCount;
 const MAX_DPR = 1.5;
 
 

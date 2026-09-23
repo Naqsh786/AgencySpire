@@ -183,32 +183,50 @@ const SelectedWork = () => {
         </div>
       </div>
 
-      {/* MOBILE / TABLET */}
+      {/* MOBILE / TABLET — horizontal scroll carousel */}
       <div className="lg:hidden">
-        <div className="container mx-auto px-6 py-24">
-          <div className="mb-14 border-b border-white/10 pb-8">
+        <div className="container mx-auto px-4 sm:px-6 py-20 sm:py-24">
+          <div className="mb-12 sm:mb-14 border-b border-white/10 pb-6 sm:pb-8">
             <div className="section-title-kdm mb-6"><h2 className="text-[2rem] font-display font-bold leading-[1.05] text-brand-text md:text-[2.5rem]">Selected Work</h2></div>
-            <h3 className="text-4xl font-display font-bold leading-[1.02] tracking-[-0.02em] text-brand-text md:text-5xl">Featured <span className="italic font-light text-brand-accent">Projects.</span></h3>
-            <p className="mt-6 max-w-md text-lg font-body leading-relaxed text-white/70">Six cinematic case studies — built to move.</p>
+            <h3 className="text-3xl sm:text-4xl font-display font-bold leading-[1.02] tracking-[-0.02em] text-brand-text md:text-5xl">Featured <span className="italic font-light text-brand-accent">Projects.</span></h3>
+            <p className="mt-6 max-w-md text-base sm:text-lg font-body leading-relaxed text-white/70">Six cinematic case studies — built to move.</p>
           </div>
-          <div className="space-y-20">
-            {projects.map((project) => (
-              <article key={project.id} className="group">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
-                  <img src={project.image} alt={project.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <span className="absolute left-4 top-4 rounded-full bg-black/75 px-3 py-1 font-mono text-xs text-brand-accent">PROJECT 0{project.id}</span>
-                </div>
-                <div className="mt-6">
-                  <p className="font-mono text-xs uppercase tracking-[0.16em] text-brand-accent">{project.category} / {project.year}</p>
-                  <h3 className="mt-3 text-3xl font-display font-bold leading-tight">{project.title}</h3>
-                  <p className="mt-4 leading-relaxed text-white/70">{project.description}</p>
-                  <div className="mt-5 flex flex-wrap gap-2">{project.tags.map((tag) => <span key={tag} className="rounded-full border border-white/15 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-wider text-white/65">{tag}</span>)}</div>
-                  <a href="#contact" className="mt-6 inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-accent">Explore <ArrowUpRight size={15} /></a>
-                </div>
-              </article>
-            ))}
+
+          {/* Mobile horizontal scroll */}
+          <div className="relative -mx-4 sm:-mx-6">
+            <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 px-4 sm:px-6" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
+              {projects.map((project) => (
+                <article key={project.id} className="group shrink-0 w-[85vw] sm:w-[60vw] snap-center">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 shadow-[0_0_30px_rgba(216,180,226,0.08)]">
+                    <img src={project.image} alt={project.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <span className="absolute left-4 top-4 rounded-full bg-black/75 px-3 py-1 font-mono text-xs text-brand-accent">PROJECT 0{project.id}</span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-bg/80 via-transparent to-transparent" />
+                  </div>
+                  <div className="mt-5 px-2">
+                    <p className="font-mono text-xs uppercase tracking-[0.16em] text-brand-accent">{project.category} / {project.year}</p>
+                    <h3 className="mt-2 text-2xl sm:text-3xl font-display font-bold leading-tight group-hover:text-brand-accent transition-colors duration-300">{project.title}</h3>
+                    <p className="mt-3 leading-relaxed text-white/70 text-sm sm:text-base">{project.description}</p>
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <span key={tag} className="rounded-full border border-white/15 px-2.5 py-1 font-mono text-[0.55rem] uppercase tracking-wider text-white/65 group-hover:border-brand-accent/50 transition-colors duration-300">{tag}</span>
+                      ))}
+                    </div>
+                    <a href="#contact" className="mt-4 inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-accent hover:gap-3 transition-all duration-300 min-h-[44px]">
+                      Explore <ArrowUpRight size={15} />
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+            {/* Scroll indicator dots */}
+            <div className="flex justify-center gap-2 mt-6">
+              {projects.map((_, i) => (
+                <span key={i} className="w-1.5 h-1.5 rounded-full bg-brand-accent/30" />
+              ))}
+            </div>
           </div>
-          <div className="mt-20 flex justify-center">
+
+          <div className="mt-12 sm:mt-16 flex justify-center">
             <a href="#work" className="btn-kdm btn-kdm-primary">
               View All Projects
               <span className="btn-kdm-icon"><ArrowRight size={16} /></span>

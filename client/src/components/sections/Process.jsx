@@ -225,11 +225,11 @@ const Process = () => {
 
       {/* ============ MOBILE — auto-cycling carousel ============ */}
       <div className="relative z-10 lg:hidden">
-        <div className="container mx-auto px-6 py-24">
+        <div className="container mx-auto px-4 sm:px-6 py-20 sm:py-24">
           <SectionHeader />
           <ChapterTracker ringRef={ringRef} activeIndex={activeIndex} />
 
-          <div className="relative mt-10">
+          <div className="relative mt-8 sm:mt-10">
             <div className="process-aurora" />
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
               <span
@@ -244,13 +244,13 @@ const Process = () => {
             </div>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-6 sm:mt-8">
             <ProcessStepsNavPills current={activeIndex} onChange={setActiveIndex} />
           </div>
 
           <a
             href="#contact"
-            className="group mt-10 inline-flex items-center gap-3 border-b border-brand-accent/40 pb-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-brand-accent transition-colors hover:text-white"
+            className="group mt-8 sm:mt-10 inline-flex items-center gap-3 border-b border-brand-accent/40 pb-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-brand-accent transition-colors hover:text-white min-h-[44px]"
           >
             Start your chapter
             <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
