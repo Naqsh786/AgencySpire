@@ -25,7 +25,7 @@ const FORM_FIELDS = [
 ];
 
 const CONTACT_INFO = [
-  { icon: Mail, label: 'hello@aetheriatech.com', href: 'mailto:hello@aetheriatech.com', clickable: true },
+  { icon: Mail, label: 'hello@agencyspire.com', href: 'mailto:hello@agencyspire.com', clickable: true },
   { icon: Phone, label: '+1 (234) 567-890', href: 'tel:+1234567890', clickable: true },
   { icon: MapPin, label: 'New York, NY', clickable: false },
 ];

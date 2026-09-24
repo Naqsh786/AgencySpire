@@ -133,7 +133,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/20 to-brand-accent/5 rounded-[3rem] rotate-12 border border-brand-accent/15 overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80"
-                  alt="Aetheria Tech workspace"
+                  alt="agencyspire workspace"
                   className="h-full w-full object-cover opacity-60"
                   loading="eager"
                 />
@@ -141,7 +141,7 @@ const Hero = () => {
               <div className="absolute inset-4 bg-gradient-to-tl from-brand-surface/80 to-brand-bg/60 rounded-[2.5rem] -rotate-6 border border-brand-accent/10 overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
-                  alt="Aetheria Tech team collaboration"
+                  alt="agencyspire team collaboration"
                   className="h-full w-full object-cover opacity-90"
                   loading="eager"
                 />
@@ -153,7 +153,7 @@ const Hero = () => {
             <div className="lg:hidden relative w-[280px] sm:w-[340px] aspect-square rounded-[2rem] border border-brand-accent/15 overflow-hidden shadow-[0_0_40px_rgba(216,180,226,0.15)]">
               <img
                 src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=70"
-                alt="Aetheria Tech workspace"
+                alt="agencyspire workspace"
                 className="h-full w-full object-cover opacity-50"
                 loading="eager"
               />

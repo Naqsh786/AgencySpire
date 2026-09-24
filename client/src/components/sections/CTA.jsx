@@ -181,7 +181,7 @@ const CTA = () => {
 
   const handleCopyEmail = async () => {
     try {
-      await navigator.clipboard.writeText('hello@aetheriatech.com');
+      await navigator.clipboard.writeText('hello@agencyspire.com');
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2200);
     } catch {
@@ -310,7 +310,7 @@ const CTA = () => {
             {/* Primary — magnetic purple gradient button */}
             <div className="relative inline-flex" data-magnetic-wrap>
               <a
-                href="mailto:hello@aetheriatech.com"
+                href="mailto:hello@agencyspire.com"
                 ref={magneticRef}
                 className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-8 py-4 sm:px-10 sm:py-5 font-display text-sm font-bold uppercase tracking-[0.15em] text-white transition-shadow duration-500 will-change-transform min-h-[52px] sm:min-h-0"
                 style={{
@@ -347,7 +347,7 @@ const CTA = () => {
               ) : (
                 <>
                   <Mail size={16} className="text-[#a06cd5]" />
-                  hello@aetheriatech.com
+                  hello@agencyspire.com
                 </>
               )}
             </button>

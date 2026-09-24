@@ -201,7 +201,7 @@ const ServiceDetail = () => {
   const heroContentY = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
   useEffect(() => {
-    window.dispatchEvent(new CustomEvent('aetheria:scroll-to-top'));
+    window.dispatchEvent(new CustomEvent('agencyspire:scroll-to-top'));
   }, [category, serviceId]);
 
   const handleMouse = useCallback((e) => {
@@ -562,7 +562,7 @@ const ServiceDetail = () => {
               </h2>
               
               <p className="text-white/50 text-lg md:text-xl max-w-xl mx-auto mb-12 font-medium">
-                Ready to elevate your {service.name.toLowerCase()}? Partner with Aetheria and turn your vision into a digital masterpiece.
+                Ready to elevate your {service.name.toLowerCase()}? Partner with AgencySpire and turn your vision into a digital masterpiece.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-5 justify-center">

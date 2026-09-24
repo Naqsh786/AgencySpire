@@ -165,7 +165,7 @@ const LiquidGlassNavbar = () => {
                   onLight ? 'text-[#25152d]' : 'text-white/90'
                 )}
               >
-                Aetheria
+                AgencySpire
               </span>
             </Link>
 
@@ -357,7 +357,7 @@ const LiquidGlassNavbar = () => {
                   onLight ? 'text-[#25152d]' : 'text-white/90'
                 )}
               >
-                Aetheria
+                AgencySpire
               </span>
             </Link>
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 
-/* Bloop-style preloader, Aetheria theme. Exactly 3000ms:
+/* Bloop-style preloader, AgencySpire theme. Exactly 3000ms:
    enter (0s) → exitText (1.25s) → blob cover (1.65s) → fade (2.25s) → gone (3s).
 
    Perf rules: transform/opacity animations ONLY (GPU-composited, no
@@ -12,7 +12,7 @@ import { motion } from 'motion/react';
 const EASE_EXPO = [0.16, 1, 0.3, 1];
 const EASE_INOUT = [0.44, 0, 0.56, 1];
 
-const TITLE = 'Aetheria';
+const TITLE = 'AgencySpire';
 const SUBTITLE = 'Creative Technology';
 
 const BLOB_PATH =

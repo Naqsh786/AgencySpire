@@ -41,7 +41,7 @@ const Footer = () => {
     {
       title: "Connect",
       links: [
-        { label: "Careers", href: "mailto:hello@aetheriatech.com?subject=Careers%20at%20Aetheria" },
+        { label: "Careers", href: "mailto:hello@agencyspire.com?subject=Careers%20at%20AgencySpire" },
         { label: "Contact", href: "/contact" },
         {
           label: "Start a Project",
@@ -55,8 +55,8 @@ const Footer = () => {
   const contactInfo = [
     {
       icon: <Mail size={18} className="text-brand-accent" />,
-      text: "hello@aetheriatech.com",
-      href: "mailto:hello@aetheriatech.com",
+      text: "hello@agencyspire.com",
+      href: "mailto:hello@agencyspire.com",
     },
     {
       icon: <MapPin size={18} className="text-brand-accent" />,
@@ -65,9 +65,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <Briefcase size={20} />, label: "LinkedIn", href: "https://www.linkedin.com/company/aetheriatech" },
-    { icon: <Camera size={20} />, label: "Instagram", href: "https://www.instagram.com/aetheriatech" },
-    { icon: <MessageCircle size={20} />, label: "Twitter", href: "https://twitter.com/aetheriatech" },
+    { icon: <Briefcase size={20} />, label: "LinkedIn", href: "https://www.linkedin.com/company/agencyspire" },
+    { icon: <Camera size={20} />, label: "Instagram", href: "https://www.instagram.com/agencyspire" },
+    { icon: <MessageCircle size={20} />, label: "Twitter", href: "https://twitter.com/agencyspire" },
     { icon: <Globe size={20} />, label: "Website", href: "/" },
   ];
 
@@ -90,7 +90,7 @@ const Footer = () => {
                 <div className="w-8 h-8 shape-hex bg-brand-accent flex items-center justify-center">
                   <span className="w-2.5 h-2.5 rounded-full bg-brand-bg"></span>
                 </div>
-                <span className="text-brand-text text-3xl font-display font-bold tracking-tight">Aetheria</span>
+                <span className="text-brand-text text-3xl font-display font-bold tracking-tight">AgencySpire</span>
               </div>
               <p className="text-base text-gray-200 leading-relaxed max-w-sm font-medium">
                 We design, build, automate and grow digital businesses â€” combining strategy, design, engineering and AI into one connected process.
@@ -178,14 +178,14 @@ const Footer = () => {
             </div>
 
             <p className="text-center md:text-left text-gray-200 font-medium">
-              &copy; {new Date().getFullYear()} Aetheria Tech. All rights reserved.
+              &copy; {new Date().getFullYear()} AgencySpire. All rights reserved.
             </p>
           </div>
         </div>
 
-        {/* Text hover effect — large outlined AETHERIA */}
-        <div className="lg:flex hidden h-[28rem] -mt-36 -mb-20">
-          <TextHoverEffect text="Aetheria" className="z-50" />
+        {/* Text hover effect — large outlined AGENCYSPIRE */}
+        <div className="lg:flex hidden h-[24rem] -mt-30 -mb-18">
+          <TextHoverEffect text="AGENCYSPIRE" className="z-50" />
         </div>
 
         <FooterBackgroundGradient />
