@@ -326,12 +326,6 @@ const CTA = () => {
                 {/* Shine sweep */}
                 <span className="absolute top-0 -inset-full h-full w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent transition-all duration-700 group-hover:left-[125%]" />
               </Link>
-              {/* Larger invisible hover zone for the magnetic pull */}
-              <span
-                data-magnetic-zone
-                className="pointer-events-auto absolute -inset-5 rounded-full"
-                aria-hidden="true"
-              />
             </div>
 
             {/* Secondary — copy email */}
