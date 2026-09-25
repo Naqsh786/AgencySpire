@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Check, Mail, ArrowRight, Sparkles, ShieldCheck, Zap, Star } from 'lucide-react';
@@ -309,8 +310,8 @@ const CTA = () => {
           <div data-cta-reveal className="mt-12 sm:mt-14 flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row sm:gap-6">
             {/* Primary — magnetic purple gradient button */}
             <div className="relative inline-flex" data-magnetic-wrap>
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 ref={magneticRef}
                 className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-8 py-4 sm:px-10 sm:py-5 font-display text-sm font-bold uppercase tracking-[0.15em] text-white transition-shadow duration-500 will-change-transform min-h-[52px] sm:min-h-0"
                 style={{
@@ -324,7 +325,7 @@ const CTA = () => {
                 </span>
                 {/* Shine sweep */}
                 <span className="absolute top-0 -inset-full h-full w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent transition-all duration-700 group-hover:left-[125%]" />
-              </a>
+              </Link>
               {/* Larger invisible hover zone for the magnetic pull */}
               <span
                 data-magnetic-zone
