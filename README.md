@@ -78,13 +78,13 @@ npm run dev        # http://localhost:5173
 
 # terminal 2
 cd server
-npm run dev        # http://localhost:4000
+npm start        # http://localhost:4000
 ```
 The client proxies API to the server via Vite config.
 
 ### Scripts
 Client: `dev`, `build`, `preview`, `lint`
-Server: `dev`, `start`
+Server: `start`
 
 ## Contact Form & Email
 - Frontend validation: `client/src/validation/contact.schema.js` (Zod)
