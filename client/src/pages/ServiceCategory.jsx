@@ -211,12 +211,12 @@ const ServiceCategory = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full mb-12 border border-white/10"
+            className="mb-12 inline-flex w-fit items-center justify-center gap-3 whitespace-nowrap rounded-full border border-white/10 px-5 py-2.5"
             style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(10px)' }}
           >
-            <Link to="/" className="text-white/40 hover:text-white transition-colors font-display text-[11px] uppercase tracking-[0.2em]">Home</Link>
-            <span className="w-1 h-1 rounded-full" style={{ background: data.color }} />
-            <span style={{ color: `${data.color}` }} className="font-display text-[11px] uppercase tracking-[0.2em] font-bold">{data.title}</span>
+            <Link to="/" className="self-center min-h-0 font-display text-[11px] uppercase leading-none tracking-[0.2em] text-white/40 transition-colors hover:text-white">Home</Link>
+            <span className="h-1 w-1 shrink-0 self-center rounded-full" style={{ background: data.color }} />
+            <span className="self-center font-display text-[11px] font-bold uppercase leading-none tracking-[0.2em]" style={{ color: `${data.color}` }}>{data.title}</span>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">

@@ -41,7 +41,7 @@ const AgencyCore = forwardRef(function AgencyCore(_, ref) {
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setClearColor(0x000000, 0);
     renderer.setSize(w, h);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
     currentMount.appendChild(renderer.domElement);
 
     const accent = new THREE.Color('#D8B4E2');
@@ -149,7 +149,7 @@ const AgencyCore = forwardRef(function AgencyCore(_, ref) {
     }
 
     // --- Ambient particle field ---
-    const particleCount = 350;
+    const particleCount = 150;
     const particles = new Float32Array(particleCount * 3);
     for (let i = 0; i < particleCount; i++) {
       const r = 4 + Math.random() * 4;

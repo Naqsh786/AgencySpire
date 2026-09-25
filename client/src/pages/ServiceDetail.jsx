@@ -290,12 +290,12 @@ const ServiceDetail = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full mb-12 border border-white/10"
+            className="mb-12 inline-flex w-fit items-center justify-center gap-3 whitespace-nowrap rounded-full border border-white/10 px-5 py-2.5"
             style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(10px)' }}
           >
-            <Link to={`/services/${category}`} className="text-white/40 hover:text-white transition-colors font-display text-[11px] uppercase tracking-[0.2em]">{catData.title}</Link>
-            <span className="w-1 h-1 rounded-full" style={{ background: catData.color }} />
-            <span style={{ color: `${catData.color}` }} className="font-display text-[11px] uppercase tracking-[0.2em] font-bold">{service.name}</span>
+            <Link to={`/services/${category}`} className="self-center min-h-0 font-display text-[11px] uppercase leading-none tracking-[0.2em] text-white/40 transition-colors hover:text-white">{catData.title}</Link>
+            <span className="h-1 w-1 shrink-0 self-center rounded-full" style={{ background: catData.color }} />
+            <span className="self-center font-display text-[11px] font-bold uppercase leading-none tracking-[0.2em]" style={{ color: `${catData.color}` }}>{service.name}</span>
           </motion.div>
 
           {/* Icon & Title */}
@@ -344,11 +344,11 @@ const ServiceDetail = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 mb-8"
+                className="mb-8 inline-flex w-fit items-center gap-3 rounded-full border border-white/10 px-5 py-2.5"
                 style={{ background: 'rgba(255,255,255,0.03)' }}
               >
-                <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: catData.color, boxShadow: `0 0 10px ${catData.color}` }} />
-                <span className="font-mono text-[11px] uppercase tracking-[0.3em] font-medium text-white/70">
+                <span className="h-2 w-2 shrink-0 self-center rounded-full animate-pulse" style={{ background: catData.color, boxShadow: `0 0 10px ${catData.color}` }} />
+                <span className="self-center font-mono text-[11px] font-medium uppercase leading-none tracking-[0.3em] text-white/70">
                   What's Included
                 </span>
               </motion.div>

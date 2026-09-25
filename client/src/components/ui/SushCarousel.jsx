@@ -156,7 +156,7 @@ const SushCarousel = ({
       canvas: canvasRef.current,
       width: window.innerWidth,
       height: window.innerHeight,
-      dpr: Math.min(window.devicePixelRatio, 2),
+      dpr: Math.min(window.devicePixelRatio, 1),
       alpha: true,
       antialias: true,
     });
