@@ -16,3 +16,11 @@ client/*.ntvs*
 client/*.njsproj
 client/*.sln
 client/*.sw?
+
+# Server
+server/node_modules
+server/.env
+server/.env.*
+!server/.env.example
+server/logs
+*.log

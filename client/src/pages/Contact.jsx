@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, MapPin, Phone, Send, CheckCircle2 } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { contactSchema } from '../validation/contact.schema.js';
 
 const FORM_FIELDS = [
   { name: 'name', label: 'Name', type: 'text', placeholder: 'Your name', required: true, half: true },
@@ -30,7 +33,7 @@ const CONTACT_INFO = [
   { icon: MapPin, label: 'New York, NY', clickable: false },
 ];
 
-function FormField({ field, value, onChange, index }) {
+function FormField({ field, register, error, index }) {
   const [focused, setFocused] = useState(false);
 
   const baseClasses = "w-full rounded-xl border bg-white/60 px-5 py-4 font-display text-sm text-[#25152d] outline-none transition-all duration-300 placeholder-[#674a70]/60";
@@ -49,9 +52,7 @@ function FormField({ field, value, onChange, index }) {
       <label className="block font-display text-sm font-medium text-[#674a70] mb-2">{field.label}</label>
       {field.type === 'select' ? (
         <select
-          name={field.name}
-          value={value}
-          onChange={onChange}
+          {...register(field.name)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           className={`${baseClasses} ${borderClasses} appearance-none`}
@@ -62,9 +63,7 @@ function FormField({ field, value, onChange, index }) {
         </select>
       ) : field.type === 'textarea' ? (
         <textarea
-          name={field.name}
-          value={value}
-          onChange={onChange}
+          {...register(field.name)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           rows={5}
@@ -74,38 +73,47 @@ function FormField({ field, value, onChange, index }) {
       ) : (
         <input
           type={field.type}
-          name={field.name}
-          value={value}
-          onChange={onChange}
+          {...register(field.name)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          required={field.required}
           className={`${baseClasses} ${borderClasses}`}
           placeholder={field.placeholder}
         />
       )}
+      {error && <p className="mt-1 text-xs text-red-600">{error.message}</p>}
     </motion.div>
   );
 }
 
 const Contact = () => {
-  const [formState, setFormState] = useState({
-    name: '', email: '', company: '', service: '', budget: '', message: '',
-  });
   const [submitted, setSubmitted] = useState(false);
+  const [apiError, setApiError] = useState('');
+  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm({
+    resolver: zodResolver(contactSchema),
+  });
 
-  const handleChange = (e) => {
-    setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const onSubmit = async (data) => {
+    setApiError('');
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${apiUrl}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      if (!res.ok || !json.success) {
+        throw new Error(json.message || 'Failed to send');
+      }
+      setSubmitted(true);
+      reset();
+    } catch (e) {
+      setApiError('Unable to send your message right now. Please try again.');
+    }
   };
 
   return (
     <div className="min-h-screen stats-section" data-nav-theme="light">
-      {/* Hero */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden z-10">
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 text-center">
           <motion.span
@@ -137,11 +145,9 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Form + Info */}
       <section className="relative pb-24 md:pb-32 z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-            {/* Form */}
             <div className="lg:col-span-3">
               <AnimatePresence mode="wait">
                 {submitted ? (
@@ -165,7 +171,7 @@ const Contact = () => {
                 ) : (
                   <motion.form
                     key="form"
-                    onSubmit={handleSubmit}
+                    onSubmit={handleSubmit(onSubmit)}
                     className="space-y-6"
                   >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -173,13 +179,14 @@ const Contact = () => {
                         <FormField
                           key={field.name}
                           field={field}
-                          value={formState[field.name]}
-                          onChange={handleChange}
+                          register={register}
+                          error={errors[field.name]}
                           index={i}
                         />
                       ))}
                     </div>
-
+                    <input type="text" {...register('website')} tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+                    {apiError && <p className="text-sm text-red-600">{apiError}</p>}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -188,12 +195,13 @@ const Contact = () => {
                     >
                       <motion.button
                         type="submit"
+                        disabled={isSubmitting}
                         whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(160,108,213,0.3)' }}
                         whileTap={{ scale: 0.98 }}
-                        className="inline-flex items-center gap-3 rounded-full px-8 py-4 font-display text-sm font-semibold text-white transition-all shadow-md hover:shadow-lg"
+                        className="inline-flex items-center gap-3 rounded-full px-8 py-4 font-display text-sm font-semibold text-white transition-all shadow-md hover:shadow-lg disabled:opacity-60"
                         style={{ background: 'linear-gradient(135deg, #a06cd5, #5b346d)' }}
                       >
-                        Send Message
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
                         <Send className="w-4 h-4" />
                       </motion.button>
                     </motion.div>
@@ -202,7 +210,6 @@ const Contact = () => {
               </AnimatePresence>
             </div>
 
-            {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
